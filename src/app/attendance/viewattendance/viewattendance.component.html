@@ -1,0 +1,69 @@
+<div id="head">
+  <div class="jumbotron container">
+          <h5>STANDARD: {{eClass.standard}}   SECTION: {{eClass.section}}  YEAR: {{eClass.year}}</h5> 
+</div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <h5>PICK DATE</h5>
+    </div>
+    <div class="col-md-3">
+        <form class="form-inline">
+            <div class="form-group">
+              <div class="input-group">
+                <input class="form-control" placeholder="yyyy-mm-dd"
+                       name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+  
+          </form>
+    </div>
+    <div class="col-md-2">
+      <h5>SESSION</h5>
+   </div>
+   <div class="col-md-3">
+    <div class="select-style">
+      <select name="session" id="session"  class="form-control" value="Afternoon" [(ngModel)]="sessionValue">
+      <option *ngFor="let session of sessions">{{session}}</option>
+      </select>
+  
+  </div>   
+   </div>
+   <div class="col-md-2">
+    <button class="btn btn-success" (click)="submit()">View</button>
+ </div>
+</div>
+
+<div *ngIf="noAttendance" class="conatiner">
+    <div class="jumbotron">
+   <h2>   No Attendance Found for this Date and Session </h2>
+    </div>
+</div>
+
+<table class="table table-hover" *ngIf="!noAttendance && submitted">
+    <thead class="thead-light">
+      <tr>
+        <th id="tadnum"><div class="telts">Admission Number</div></th>
+        <th id="tname"><div class="telts">Name</div></th>
+        <th id="tp">Present</th>
+        <th id="ta">Absent</th>
+        <th id="tr"><div class="telts">Reason</div></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students" class="table-success"  [ngClass]="{'table-danger':checkAbsent(student._id)}">
+        <td><div class="telts">{{student.studentid}}</div></td>
+        <td><div class="telts">{{student.name}}</div></td>
+        <td><input type="radio"   id="radiobtn" class="form-check-input"  name="{{student.studentid}}" [checked]="!checkAbsent(student._id)" (change)="presentStudent(student._id)" ></td>
+        <td><input type="radio"   id="radiobtn" class="form-check-input"  name="{{student.studentid}}" [checked]="checkAbsent(student._id)" (change)="absentStudent(student._id)"></td>
+      <!--  <td><input type="text" class="form-control"  *ngIf="checkAbsent(student._id)" (blur)="updateAbsent($event,student._id)"></td> -->
+      <td> <p class="form-control"  *ngIf="checkAbsent(student._id)">{{ getReason(student._id) }}</p></td>
+       <td *ngIf="!checkAbsent(student._id)"><h5></h5></td></tr>
+    </tbody>
+  </table>

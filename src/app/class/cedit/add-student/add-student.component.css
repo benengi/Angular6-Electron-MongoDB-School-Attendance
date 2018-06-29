@@ -1,0 +1,43 @@
+#head{
+    padding-left: 0px;
+}
+.jumbotron{
+    padding-bottom: 5px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+
+#newFaculty{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.fa{
+    padding-right: 4px;
+}
+  
+#editbtn{
+    padding-right: 5px;
+}
+
+#body{
+    padding: 10px;
+}
+
+#element{
+    margin-bottom: 5px;
+}
+
+
+#card{
+    display:inline-block;
+    margin: 15px 15px;
+}
+
+.conatiner{
+    padding: 20px 20px;
+}
+
+#addbtn{
+    padding-left: 50px;
+}

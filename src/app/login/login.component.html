@@ -1,0 +1,33 @@
+<div class="row" id="logpage">
+<div class="container col-lg-8 col-md-8 no-padding">
+<img id="welcome" src="../../assets//welcome.jpg" alt="Give Alternate Path" class="rounded" >
+<!--<img id="welcome" src="../../dist/assets/welcome.jpg" alt="Give Alternate Path" class="rounded">-->
+</div>
+
+<div class=" container-fluid col-lg-4  col-md-4 float-right" id="logbox">
+  <div class="jumbotron">
+    <h1>LOGIN</h1>
+  </div>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">  
+        <label for="username">USERNAME</label>
+        <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-user fa-2x" aria-hidden="true"></i></span>
+       <div id="userbox"> <input type="text" class="form-control" id="username" formControlName="username" placeholder="staffid"></div>
+        </div>
+        <span *ngIf="! loginForm.get('username').valid && loginForm.get('username').touched" class="help-block" > <p [ngStyle]="{ color: 'Tomato' } "> Enter a valid username</p></span>  
+    </div>
+      <div class="form-group">
+        <label for="pwd">PASSWORD</label>
+        <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-key fa-2x"></i></span>
+       <div id="passbox"> <input type="password" class="form-control" id="password" formControlName="password" placeholder="password"></div>
+      </div>  
+        <span *ngIf="! loginForm.get('password').valid && loginForm.get('password').touched" class="help-block"><p [ngStyle]="{ color: 'Tomato' } ">Please Enter a valid Password</p></span>
+      </div>
+      <span *ngIf="!fstate" class="help-block"><p [ngStyle]="{ color: 'Tomato' } ">Please Enter a valid Username and Password</p></span>
+     <div id="btnbox"> <button type="submit" class="btn btn-success" id="loginbtn">LOGIN</button></div>
+    </form>
+    </div>
+
+</div>

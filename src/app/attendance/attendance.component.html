@@ -1,0 +1,137 @@
+<div id="head">
+  <div class="jumbotron container">
+   <h5><b>ATTENDANCE</b></h5> 
+</div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+
+<!--    <div class="col-md-1">
+          <h4>DATE</h4>
+        </div>    
+    <div class="col-md-3">
+          <form class="form-inline">
+              <div class="form-group">
+                <div class="input-group">
+                  <input class="form-control" placeholder="yyyy-mm-dd"
+                         name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+                      <i class="fa fa-calendar" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+      </div>
+    -->
+    <div class="col-md-2">
+      <button class="btn btn-warning" (click)="open(content)">Set Holiday</button>
+    </div>
+  
+
+
+
+  <div class="col-md-2">
+      <h5>PICK A CLASS</h5>
+    </div>
+<div class="col-md-1"> 
+  <label for="year"> <h5>YEAR</h5> </label>
+</div>
+        <div class="col-md-2">
+          <div class="input-group col-md-12">
+                <select name="year" id="year"  class="form-control"  [(ngModel)]="yearValue" (change)="setClasses()">
+                        <option *ngFor="let year of years" [ngValue]="year">{{year}}</option>
+                        </select>
+              </div>
+      </div> 
+          <div class="col-md-1"> 
+                   <label for="standard"> <h5>STANDARD</h5> </label>
+          </div>
+          <div class="col-md-2"> 
+          <div class="input-group col-md-12">
+                  <select name="standard" id="standard"  class="form-control"  [(ngModel)]="standardValue">
+                          <option *ngFor="let standard of dstandards" [ngValue]="standard">{{standard}}</option>
+                          </select>
+              </div>
+        </div>
+    
+        
+
+
+
+  </div>
+</div>
+
+<br>
+
+<div class="container">
+<div id="card" *ngFor="let class of classes | classfilter:standardValue: yearValue" >
+<div id="card">
+<div class="card bg-secondary text-white" style="width: 170px;">
+      <div class="card-header">{{class.year}}-{{class.year + 1}}</div>
+  <div class="card-body">
+          <p>STANDARD: {{class.standard}}</p>
+          <p> SECTION: {{class.section | uppercase}}</p>
+  <div class="row" style="margin-bottom: 4px;"> 
+    <div class="col-6">  <button id="putbtn" class="btn btn-sm btn-info" (click)="putAttendance(class)"><i class="fa fa-edit" aria-hidden="true"></i>Put Attendance</button></div>
+  </div>
+  <div class="row"> 
+    <div class="col-6">  <button class="btn btn-sm btn-primary" (click)="viewAttendance(class)"><i class="fa fa-eye" aria-hidden="true"></i>View Attendance</button></div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Set Holiday</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  
+  <div *ngIf="singleHoliday" class="modal-body">
+    <button class="btn btn-secondary" id="sbtn" (click)="setSingleDay()">Single Day</button>
+    <button class="btn btn-secondary" (click)="setMultipleDays()">Multiple Days</button>
+      <form>
+      <div class="form-group">
+        <div class="input-group">
+          <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #dp="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" (click)="dp.toggle()" type="button">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+<div *ngIf="!singleHoliday" class="modal-body">
+    <button class="btn btn-secondary" id="sbtn" (click)="setSingleDay()" >Single Day</button>
+    <button class="btn btn-secondary" (click)="setMultipleDays()">Multiple Days</button>
+<ngb-datepicker #dp (select)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t">
+</ngb-datepicker>
+
+<ng-template #t let-date="date" let-focused="focused">
+  <span class="custom-day"
+        [class.focused]="focused"
+        [class.range]="isFrom(date) || isTo(date) || isInside(date) || isHovered(date)"
+        [class.faded]="isHovered(date) || isInside(date)"
+        (mouseenter)="hoveredDate = date"
+        (mouseleave)="hoveredDate = null">
+    {{ date.day }}
+  </span>
+</ng-template>
+</div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" [ngClass]="{'disabled': holidayBtnState}" (click)="setHoliday()">Submit</button>
+    <button type="button" class="btn btn-danger" (click)="c('Save click')">Close</button>
+  </div>
+</ng-template>

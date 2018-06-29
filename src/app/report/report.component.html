@@ -1,0 +1,66 @@
+<div id="head">
+    <div class="jumbotron container">
+        <h5>REPORT</h5> 
+  </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2">
+         <h5>PICK DATE</h5>
+    </div>
+    <div class="col-md-3">
+        <form class="form-inline">
+            <div class="form-group">
+              <div class="input-group">
+                <input class="form-control" placeholder="yyyy-mm-dd"
+                       name="dp" [(ngModel)]="model"  ngbDatepicker #d="ngbDatepicker">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+             </form>
+    </div>
+   <div class="col-md-2">
+    <button class="btn btn-success" (click)="genReport()">Generate Report</button>
+ </div>
+ <div class="col-md-2">
+    <button class="btn btn-info" [disabled]="!generated"  (click)="printReport()">print Report</button>
+ </div>
+</div>
+<div id="content" #content>
+  <h5>Date : {{dateofattendance | date: 'dd/MM/yyyy'}}</h5>
+  
+  <div class="row">
+    <div class="col-12">
+    <div class="table-responsive-sm">
+      <table class="table table-bordered table-sm" >
+      <thead  class="thead-light">
+        <tr>
+          <th>STANDARD</th>
+          <th>SECTION</th>
+          <th>ADMISSION NUMBER</th>
+          <th>NAME</th>
+          <th>REASON</th>
+          <th>SESSION</th>
+        </tr>
+      </thead>
+     <!-- <tbody> -->
+        <tbody *ngFor="let det of rdetail">
+          <tr *ngFor="let stud of det.absent">
+         <td><div>{{det.class.standard}}</div></td>
+          <td ><div>{{det.class.section}}</div></td>    
+          <td><div>{{stud.student.studentid}}</div></td>
+          <td ><div>{{stud.student.name}}</div></td>
+          <td ><div>{{stud.reason}}</div></td>
+          <td ><div>{{det.session}}</div></td>
+        </tr>
+      <!--  </div> -->
+      </tbody>
+    </table>
+    </div>
+    </div>
+  </div>
+</div>

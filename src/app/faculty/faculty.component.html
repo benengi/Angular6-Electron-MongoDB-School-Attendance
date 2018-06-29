@@ -1,0 +1,45 @@
+<div id="head">
+    <div id="head" class="jumbotron container">
+     <h5><b>FACULTIES</b></h5> 
+  </div>
+ </div>
+
+ <div class="container">
+    <div class="row">
+          <div class="col-md-6">
+              <div id="custom-search-input">
+                  <div class="input-group col-md-12">
+                      <input type="text" class="form-control" id ="searchbox"  placeholder="Search by name" [(ngModel)]="searchText"/>
+                      <span class="input-group-btn">
+                          <button class="btn btn-info" type="button">
+                              <i class="fa fa-search fa-1x"></i>
+                          </button>
+                      </span>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-6">
+          <button class="btn btn-info" id="newFaculty" (click)='AddFaculty()'><i class="fa fa-plus" aria-hidden="true"></i> Add new Faculty </button>
+          </div>
+    </div>
+  </div>
+
+  <br>
+<div class="container">
+        
+    <div id="card" *ngFor="let faculty of Faculties | filter : searchText">
+    <div class="card  bg-secondary text-white" style="width: 205px;">
+            <div class="card-header"><i class="fa fa-user" aria-hidden="true"></i>{{faculty.name}}</div>
+        <div class="card-body">
+            <p><i class="fa fa-calendar" aria-hidden="true"></i>{{faculty.dateofbirth | date: 'dd/MM/yyyy'}}</p>
+            <p id="email" ><i class="fa fa-envelope" aria-hidden="true"></i>{{faculty.email}}</p>
+            <p > <i class="fa fa-phone" aria-hidden="true"></i>{{faculty.phonenumber}}</p>
+           <div class="row"> 
+          <div class="col-md-5">  <button class=" btn btn-sm btn-primary" (click)="editFaculty(faculty)"><i class="fa fa-edit" aria-hidden="true"></i>Edit</button></div>
+         <div class="col-md-5">   <button class="  btn btn-danger btn-sm" (click)="deleteFaculty(faculty._id)"><i class="fa fa-trash" aria-hidden="true"></i>Remove</button></div>
+        </div>
+    </div>
+    </div>
+</div>
+
+</div>

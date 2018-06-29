@@ -1,0 +1,15 @@
+#head{
+    padding-left: 0px;
+}
+.jumbotron{
+    padding-bottom: 5px;
+    padding-top: 5px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+h5{
+    margin-bottom: 0px;
+}
+table th {
+    width: auto !important;
+}

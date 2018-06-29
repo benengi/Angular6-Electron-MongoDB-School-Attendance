@@ -1,0 +1,27 @@
+#welcome{
+  width:860px;  
+  height:635px;   
+}
+.no-padding {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  #logpage{
+    padding-right:10px;
+  }
+  #username{
+    display: block;
+    padding-left: 10px;
+  }
+  #userbox {
+    padding-left: 10px;
+  }
+  #loginbtn{
+    padding-left: 90px;
+    padding-right: 90px;
+  }
+  #btnbox{
+    padding-top: 20px;
+    padding-left: 30px;
+  }

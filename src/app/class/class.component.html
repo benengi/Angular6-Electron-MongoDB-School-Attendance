@@ -1,0 +1,56 @@
+<div id="head">
+    <div class="jumbotron container">
+     <h5><b>CLASSES</b></h5> 
+  </div>
+ </div>
+
+ 
+<div class="container">
+        <div class="row">
+              
+                <div class="col-md-2"> 
+                        <label for="year"> <h5>YEAR :</h5> </label>
+               </div>  
+              <div class="col-md-2">
+                <div class="input-group col-md-12">
+                      <select name="year" id="year"  class="form-control"  [(ngModel)]="yearValue" (change)="setClasses()">
+                              <option *ngFor="let year of years" [ngValue]="year">{{year}}</option>
+                              </select>
+                    </div>
+            </div> 
+                <div class="col-md-2"> 
+                         <label for="standard"> <h5>STANDARD :</h5> </label>
+                </div>
+                <div class="col-md-2"> 
+                <div class="input-group col-md-12">
+                        <select name="standard" id="standard"  class="form-control"  [(ngModel)]="standardValue">
+                                <option *ngFor="let standard of dstandards" [ngValue]="standard">{{standard}}</option>
+                                </select>
+                    </div>
+              </div>
+              
+              <div class="col-md-4">
+                    <button class="btn btn-info" id="newFaculty" (click)='AddClass()'><i class="fa fa-plus" aria-hidden="true"></i> Add new class </button>
+              </div>
+        </div>
+      </div>
+
+<br>
+
+<div class="container">
+    <div id="card" *ngFor="let class of classes | classfilter:standardValue: yearValue" >
+  <div id="card">
+    <div class="card bg-secondary text-white" style="width: 170px;">
+            <div class="card-header">{{class.year}}-{{class.year + 1}}</div>
+        <div class="card-body">
+                <p>STANDARD: {{class.standard}}</p>
+                <p> SECTION: {{class.section | uppercase}}</p>
+        <div class="row"> 
+          <div class="col-5">  <button class="btn btn-sm btn-primary" (click)="editClass(class)"><i class="fa fa-edit" aria-hidden="true"></i>View</button></div>
+         <div class="col-5">   <button class="btn btn-danger btn-sm" (click)="deleteClass(class._id)"><i class="fa fa-trash" aria-hidden="true"></i>Remove</button></div>
+        </div>
+    </div>
+    </div>
+   </div>
+</div>
+</div>

@@ -1,0 +1,62 @@
+#head{
+    padding-left: 0px;
+}
+.jumbotron{
+    padding-bottom: 5px;
+    padding-top: 5px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+h5{
+    margin-bottom: 0px;
+}
+
+#radiobtn{
+    size: 50px;
+}
+
+input[type="radio"] {
+    -ms-transform: scale(1.25); /* IE 9 */
+    -webkit-transform: scale(1.25); /* Chrome, Safari, Opera */
+    transform: scale(1.25);
+}
+
+#tadnum{
+    width: 20%;
+}
+
+#tname{
+    width: 20%;
+}
+
+#tp{
+    width: 15%;
+}
+
+#ta{
+    width: 15%;
+}
+
+#tr{
+    width: 30%;
+}
+
+#radiobtn{
+    margin-left: 20px;
+}
+
+.table{
+    margin-top: 5px;
+}
+
+td{
+    padding: 3px 3px 3px 3px;
+}
+
+.form-control{
+    padding: 3px 6px 3px 6px;
+}
+
+.telts{
+    margin-left: 20px;
+}

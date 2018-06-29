@@ -1,0 +1,52 @@
+<div id="head">
+    <div class="jumbotron container">
+     <h5><b>STUDENTS</b></h5> 
+  </div>
+  </div>
+  
+  <div class="container">
+    <div class="row">
+          <div class="col-md-4">
+              <div class="input-group col-md-12">
+                      <input type="text" class="form-control" placeholder="Search by name" [(ngModel)]="searchText"/>
+                      <span class="input-group-btn">
+                          <button class="btn btn-info" type="button">
+                              <i class="fa fa-search fa-1x"></i>
+                          </button>
+                      </span>
+                  </div>
+          </div>
+          <div class="col-md-4">
+                  <div class="input-group col-md-12">
+                          <input type="text" class="form-control" placeholder="Search by admission number" [(ngModel)]="adnum"/>
+                          <span class="input-group-btn">
+                              <button class="btn btn-info" type="button">
+                                  <i class="fa fa-search fa-1x"></i>
+                              </button>
+                          </span>
+                      </div>
+              </div>
+          <div class="col-md-4">
+          <button class="btn btn-info" id="done" (click)='doneStudent()'> Done </button>
+          </div>
+    </div>
+  </div>
+  
+  <br>
+  
+<div class="container">
+  <div id="card" *ngFor="let student of students | filter : searchText | adfilter : adnum">
+  <div class="card bg-secondary text-white" style="width: 160px">
+      <div id="body" class="card-body">
+            <p id="element"><i class="fa fa-id-badge" aria-hidden="true"></i>{{student.studentid}}</p>
+           <p id="element"><i class="fa fa-user" aria-hidden="true"></i>{{student.name}}</p>
+          <p id="element"><i class="fa fa-calendar" aria-hidden="true"></i>{{student.dateofbirth | date: 'dd/MM/yyyy'}}</p>
+          <p id="element"> <i class="fa fa-phone" aria-hidden="true"></i>{{student.phonenumber}}</p>
+         <div class="row"> 
+        <div *ngIf="! check(student.studentid)" id="addbtn" class="col-6">  <button class="btn btn-primary  btn-sm" (click)="addStudent(student._id,student.studentid)"><i class="fa fa-plus" aria-hidden="true"></i>ADD</button></div>
+        <div *ngIf="check(student.studentid)" id="addbtn" class="col-6">  <button class="btn btn-success  btn-sm" (click)="addStudent(student._id)"><i class="fa fa-check" aria-hidden="true"></i>ADDED</button></div>
+      </div>
+  </div>
+  </div>
+  </div>
+</div>

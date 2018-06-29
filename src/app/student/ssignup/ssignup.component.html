@@ -1,0 +1,72 @@
+<div id="head">
+  <div class="jumbotron container">
+   <h5><b>NEW STUDENT</b></h5> 
+  </div>
+  </div>
+  <form id="fbox" [formGroup]="signUpForm" (ngSubmit)="signUp()">
+  
+    <div class="form-group row">
+        <label for="admissionnumber" class="col-sm-2 col-form-label"><h5>ADMISSION NUMBER</h5></label>
+        <div class="col-sm-5">
+          <input type="number" class="form-control" id="studentid" placeholder="Admission number" formControlName="studentid">
+        </div>
+        <span *ngIf="! signUpForm.get('studentid').valid && signUpForm.get('studentid').touched" class="help-block" > <p [ngStyle]="{ color: 'Tomato' } "> Enter a valid StudentId</p></span>
+</div>
+
+      <div class="form-group row">
+          <label for="name" class="col-sm-2 col-form-label"><h5>NAME</h5></label>
+          <div class="col-sm-5">
+            <input type="text" class="form-control" id="name" placeholder="name" formControlName="name">
+          </div>
+          <span *ngIf="! signUpForm.get('name').valid && signUpForm.get('name').touched" class="help-block" > <p [ngStyle]="{ color: 'Tomato' } "> Enter a valid Name</p></span>
+      </div>
+
+      <div class="form-group row">
+        <label for="fathersname" class="col-sm-2 col-form-label"><h5>FATHERS NAME</h5></label>
+        <div class="col-sm-5">
+          <input type="text" class="form-control" id="fathersname" placeholder="fathers name" formControlName="fathersname">
+        </div>
+        <span *ngIf="! signUpForm.get('fathersname').valid && signUpForm.get('fathersname').touched" class="help-block" > <p [ngStyle]="{ color: 'Tomato' } "> Enter a valid Name</p></span>
+    </div>
+
+    <div class="form-group row">
+        <label for="mothersname" class="col-sm-2 col-form-label"><h5>MOTHERS NAME</h5></label>
+        <div class="col-sm-5">
+          <input type="text" class="form-control" id="mothersname" placeholder="mothersname" formControlName="mothersname">
+        </div>
+        <span *ngIf="! signUpForm.get('mothersname').valid && signUpForm.get('mothersname').touched" class="help-block" > <p [ngStyle]="{ color: 'Tomato' } "> Enter a valid Name</p></span>
+    </div>
+  
+      
+      <div class="form-group row">
+           <label for="dateofbirth" class="col-sm-2 col-form-label"><h5>Date Of Birth</h5></label>
+           <div class="col-sm-5">
+           <input type="date" class="form-control" id="dateofbirth"  formControlName="dateofbirth">
+           </div>
+           <span *ngIf="! signUpForm.get('dateofbirth').valid && signUpForm.get('dateofbirth').touched" class="help-block" > <p [ngStyle]="{ color: 'Tomato' } "> Enter a valid DOB</p></span>
+      </div>
+  
+      <div class="form-group row">
+        <label for="gender" class="col-sm-2 col-form-label"><h5>Gender</h5></label>
+        <div class="col-sm-5">
+            <div class="select-style">
+                <select name="gender" id="gender"  class="form-control" formControlName="gender">
+                <option *ngFor="let gender of genders">{{gender}}</option>
+                </select>
+            </div>   
+        </div>
+        <span *ngIf="! signUpForm.get('gender').valid && signUpForm.get('gender').touched" class="help-block" > <p [ngStyle]="{ color: 'Tomato' } ">Select a gender</p></span>
+   </div>
+  
+      <div class="form-group row">
+       <label for="name" class="col-sm-2 col-form-label"><h5>Phone</h5></label>
+       <div class="col-sm-5">
+         <input type="text" class="form-control" id="phonenumber" placeholder="phonenumber" formControlName="phonenumber">
+       </div>
+         <span *ngIf="! signUpForm.get('phonenumber').valid && signUpForm.get('phonenumber').touched" class="help-block" > <p [ngStyle]="{ color: 'Tomato' } "> Enter a valid phonenumber</p></span>
+        </div>
+                 <span *ngIf="!fstate" class="help-block"><p [ngStyle]="{ color: 'Tomato' } ">Please Enter valid information in the Fields</p></span>
+                 <div id="btnbox"> <button type="button" class="btn btn-info" id="loginbtn" (click)="signUp()">SIGN UP</button></div>
+      
+    </form> 
+  

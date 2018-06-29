@@ -1,0 +1,22 @@
+.box{
+    padding-left: 10px;
+    padding-right: 10px;    
+}
+#iplabels{
+    padding-left: 18px;
+}
+#fbox{
+    padding-left: 10px;
+}
+#colFormLabel{
+    padding-right: 40px;
+}
+.jumbotron{
+    padding-bottom: 5px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+#head{
+    padding-left: 0px;
+}
